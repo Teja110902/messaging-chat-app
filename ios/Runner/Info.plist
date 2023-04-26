@@ -67,5 +67,8 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Microphone Use</string>
 
+	<key>NSContactsUsageDescription</key>
+    <string>Contact list to chat</string>
+
 </dict>
 </plist>

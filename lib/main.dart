@@ -7,7 +7,7 @@ import 'package:whatsapp_ui/features/landing/screens/landing_screen.dart';
 import 'package:whatsapp_ui/firebase_options.dart';
 import 'package:whatsapp_ui/responsive/responsive_layout.dart';
 import 'package:whatsapp_ui/router.dart';
-import 'package:whatsapp_ui/screens/mobile_screen_layout.dart';
+import 'package:whatsapp_ui/screens/mobile_layout_screen.dart';
 import 'package:whatsapp_ui/screens/web_screen_layout.dart';
 import 'colors.dart';
 import 'common/widgets/loader.dart';

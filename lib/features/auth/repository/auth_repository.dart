@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whatsapp_ui/common/utils/utils.dart';
 import 'package:whatsapp_ui/features/auth/screens/otp_screen.dart';
 import 'package:whatsapp_ui/models/user_model.dart';
-import 'package:whatsapp_ui/screens/mobile_screen_layout.dart';
+import 'package:whatsapp_ui/screens/mobile_layout_screen.dart';
 
 import '../../../common/repositories/common_firebase_storage_repository.dart';
 import '../screens/user_information_screen.dart';
@@ -100,7 +100,7 @@ class AuthRepository {
         uid: uid,
         profilePic: photoUrl,
         isOnline: true,
-        phoneNumber: auth.currentUser!.uid,
+        phoneNumber: auth.currentUser!.phoneNumber!,
         groupId: [],
       );
 
