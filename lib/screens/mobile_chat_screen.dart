@@ -46,7 +46,6 @@ class MobileChatScreen extends ConsumerWidget {
                 )
               ],
             );
-            ;
           },
         ),
         centerTitle: false,
