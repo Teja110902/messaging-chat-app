@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whatsapp_ui/common/widgets/loader.dart';
 import 'package:whatsapp_ui/features/auth/controller/auth_controller.dart';
+import 'package:whatsapp_ui/features/chat/widgets/bottom_chat_field.dart';
 import 'package:whatsapp_ui/models/user_model.dart';
 
 import 'package:whatsapp_ui/widgets/chat_list.dart';
 
-import '../colors.dart';
-import '../info.dart';
+import '../../../colors.dart';
 
 class MobileChatScreen extends ConsumerWidget {
   static const String routeName = '/mobile-chat-screen';
@@ -66,56 +66,11 @@ class MobileChatScreen extends ConsumerWidget {
       ),
       body: Column(
         // Display a CHAT LIST
-        children: [
-          const Expanded(
+        children: const [
+          Expanded(
             child: ChatList(),
           ),
-          TextField(
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: mobileChatBoxColor,
-              prefixIcon: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  children: const [
-                    Icon(
-                      Icons.emoji_emotions,
-                      color: Colors.grey,
-                    ),
-                  ],
-                ),
-              ),
-              suffixIcon: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: const [
-                    Icon(
-                      Icons.camera_alt,
-                      color: Colors.grey,
-                    ),
-                    Icon(
-                      Icons.attach_file,
-                      color: Colors.grey,
-                    ),
-                    Icon(
-                      Icons.money,
-                      color: Colors.grey,
-                    ),
-                  ],
-                ),
-              ),
-              hintText: 'Type a message',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20),
-                borderSide: const BorderSide(
-                  width: 0,
-                  style: BorderStyle.none,
-                ),
-              ),
-              contentPadding: const EdgeInsets.all(10),
-            ),
-          )
+          BottomChatField()
         ],
         // Display a TEXT INPUT for messaging
       ),
