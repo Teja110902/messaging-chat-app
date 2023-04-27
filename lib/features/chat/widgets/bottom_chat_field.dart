@@ -1,17 +1,43 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:whatsapp_ui/colors.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class BottomChatField extends StatefulWidget {
+import 'package:whatsapp_ui/colors.dart';
+import 'package:whatsapp_ui/features/chat/controller/chat_controller.dart';
+
+class BottomChatField extends ConsumerStatefulWidget {
+  final String recieverUserId;
+
   const BottomChatField({
-    super.key,
+    required this.recieverUserId,
   });
 
   @override
-  State<BottomChatField> createState() => _BottomChatFieldState();
+  ConsumerState<BottomChatField> createState() => _BottomChatFieldState();
 }
 
-class _BottomChatFieldState extends State<BottomChatField> {
+class _BottomChatFieldState extends ConsumerState<BottomChatField> {
   bool isShowSendButton = false;
+  final TextEditingController _messageController = TextEditingController();
+
+  void sendTextMessage() async {
+    if (isShowSendButton) {
+      ref.read(chatControllerProvider).sendTextMessage(
+            context,
+            _messageController.text.trim(),
+            widget.recieverUserId,
+          );
+      setState(() {
+        _messageController.text = '';
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _messageController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +45,7 @@ class _BottomChatFieldState extends State<BottomChatField> {
       children: [
         Expanded(
           child: TextFormField(
+            controller: _messageController,
             onChanged: (value) {
               if (value.isNotEmpty) {
                 setState(() {
@@ -104,9 +131,12 @@ class _BottomChatFieldState extends State<BottomChatField> {
           child: CircleAvatar(
             backgroundColor: const Color(0xFF128C7E),
             radius: 25,
-            child: Icon(
-              isShowSendButton ? Icons.send : Icons.mic,
-              color: Colors.white,
+            child: GestureDetector(
+              child: Icon(
+                isShowSendButton ? Icons.send : Icons.mic,
+                color: Colors.white,
+              ),
+              onTap: sendTextMessage,
             ),
           ),
         ),
