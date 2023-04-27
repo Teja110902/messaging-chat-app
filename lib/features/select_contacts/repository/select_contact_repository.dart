@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whatsapp_ui/common/utils/utils.dart';
+import 'package:whatsapp_ui/screens/mobile_chat_screen.dart';
 
 import '../../../models/user_model.dart';
 
@@ -47,6 +48,7 @@ class SelectContactRepository {
 
         if (selectedPhoneNumber == userData.phoneNumber) {
           isFound = true;
+          Navigator.pushNamed(context, MobileChatScreen.routeName);
         }
       }
 
