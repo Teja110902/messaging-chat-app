@@ -6,7 +6,7 @@ import 'package:whatsapp_ui/features/auth/controller/auth_controller.dart';
 import 'package:whatsapp_ui/features/chat/widgets/bottom_chat_field.dart';
 import 'package:whatsapp_ui/models/user_model.dart';
 
-import 'package:whatsapp_ui/widgets/chat_list.dart';
+import 'package:whatsapp_ui/features/chat/widgets/chat_list.dart';
 
 import '../../../colors.dart';
 
@@ -67,8 +67,10 @@ class MobileChatScreen extends ConsumerWidget {
       body: Column(
         // Display a CHAT LIST
         children: [
-          const Expanded(
-            child: ChatList(),
+          Expanded(
+            child: ChatList(
+              recieverUserId: uid,
+            ),
           ),
           BottomChatField(
             recieverUserId: uid,
